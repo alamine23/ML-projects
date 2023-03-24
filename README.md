@@ -5,28 +5,29 @@ This repository contains 3 machine learning projects.
 ## Hybrid solar/fossil-fuel gas turbine power system
 This project focuses on the implementation of a hybrid solar/fossil-fuel gas turbine power system. The following files are included:
 Part 1 of this project deals with comparison of a first-principles neural network implementation and the corresponding calculation using the keras Python software.
+
 <img width="465" alt="Simple_NN" src="https://user-images.githubusercontent.com/124940176/227660211-dc6d4153-4b9c-451e-95f1-930d986c450a.png">
-Backpropagation:
-Squared error: $E_3=(a_3-y_3)^2$
-We want to correct all the weights and bias values to make the squared error close to zero. When we achieve that for a large number of data sets, we have trained the neural network to model the system. 
-Consider one of the weights, $w_01$. If we knew the derivative $\frac{\partial E3}{\partial w_01}$ ,we could use a Newton-Raphson finite difference approximation to find a new value for $w_01$ that would make the error go to zero:
-$w_01,n = w_01 + (0 - E_3) / (\frac{\partial E3}{\partial w_01})$
-
-However, in our neural network, we have eight weights and biases, so we only want to correct about 1/8th of the total error at each iteration. To do this, we modify the above equation to:
-
-w01,n = w01 + γ(0 - E3) / (∂E3 / ∂w01)
-
-Here, γ is a learning rate parameter that is on the order of 1/total number of weights and biases in the neural network. If we apply this logic to all the weights and biases, we obtain the following set of relations:
-
-w01,n = w01 + γ(0 - E3) / (∂E3 / ∂w01)   (1a)
-w02,n = w02 + γ(0 - E3) / (∂E3 / ∂w02)   etc...
-
 
 - `First_Principles_implementation.ipynb`: This notebook contains the implementation of a first-principles model of the system (neural network designed from scartch).
-
+- `Keras_First_Principles_comparison.ipynb`: This notebook compares the results of the neural network and first-principles models.
+Part 2 of this project deals with analysis of the hybrid solar fossil-fuel gas turbine system in the figures below.
+<img width="370" alt="Screenshot 2023-03-24 at 4 31 38 PM" src="https://user-images.githubusercontent.com/124940176/227661388-04f810f8-836c-4387-b757-07cd4130948c.png">
+In this system, air at atmospheric pressure = 101 kPa and at a temperature enters thecompressor inlet at a flow rate typically about 6.0 kg/s. The air flowing out of the compressor at the high-side pressure first is heated to temperature in the regenerator, transferring waste heat from the turbine exhaust stream. The gas is then heated further in an exchanger that delivers solar thermal heat input, raising the temperature to . Finally, the air flows into a
+burner where fuel is injected and burned to raise the temperature to . Having as high as possible is thermodynamically advantageous, resulting in higher system efficiency for higher $T_4$. However, if is too high, the components of the turbine may be damaged, and for that reason, an optimal temperature is usually specified which is the highest value that can be tolerated by the blade materials in the turbine. Recent development efforts have resulting in
+turbine designs, with special blade materials, that can operate at 1600 K. Here the system is specified to operate at 1473 K (1200 °C), with a pressure ratio $P_2$/$P_1$ of 14. 
+The burner in the system is designed to burn pure methane or a mixture of methane (CH4) with some added propane (C3H8). The mixture ratio may be dictated by cost factors and availability, resulting in the mole fraction of the fuels ranging from 0% propane and all methane, to 50% propane and 50% methane, by mole. Key parameters here are the molar air-to-fuel ratio $alpha$ and the fuel propane mole fraction $gamma$ defined as:
+$alpha$=(moles of air)/(total moles of propane and methane in mixture) in inlet flow to burner.
+$gamma$=(moles of propane)/(moles of propane and methane in fuel mixture).
+Air inlet temperature, solar heat input , and the fuel mixture fraction vary during system operation, and consequently, the rate of fuel injection in the burner must be varied to hold the turbine inlet temperature at the target level of 1473 K. To facilitate model-based control of , a model that predicts the required air-to fuel ratio to achieve this turbine inlet temperature under varying conditions can be used by a controller to set the fuel flow rate at the proper values. Two ways of constructing a model are:
+1. Construct a physical model based on thermodynamics, fluid dynamics and heat transfer.
+2. Run performance tests for the system over the expected range of operating conditions and
+construct a mathematical/computational fit to the experimental data using machine learning
+methods.
+Option 1, construction of a physical model, has advantages and drawbacks. Use of a theoretical model can avoid the need for building a prototype system and obtaining test data. However, physical models generally incorporate idealizations that may not be completely accurate, and they may require knowledge of system parameters that may not be known with complete accuracy. For example, the regenerative heat exchanger may be modeled with the assumption that its heat transfer conductance is uniform throughout the unit, which may not be accurate. Also, the value of the conductance may not be known precisely. Other parameters such as the compressor isentropic efficiency and the turbine isentropic efficiency also may vary with conditions, and not be known to high accuracy. Creating an accurate model this way may be challenging.
+Option 2 requires obtaining test data. However, creating a machine learning model to fit the multivariate data accounts for all the real system parametric effects and requires no assumptions or idealizations. If a good fit to the data is obtained, the predictions of the resulting model can be accurate to the level of the uncertainty in the data and the mean absolute error or RMS error of the fit. In addition, data obtained during field operation of the systems can be used to update the model accounting for variation in its performance during its operational lifetime.
+The objective of Part 2 of this project is to construct a neural network model of the performance of the gas turbine system shown in Figures above.
 - `Keras_NN_Prediction.ipynb`: This notebook uses a neural network to predict the performance of the system.
 
-- `Keras_First_Principles_comparison.ipynb`: This notebook compares the results of the neural network and first-principles models.
 
 ## Design and control of a solar PV power generation system:
 
