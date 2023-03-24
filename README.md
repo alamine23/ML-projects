@@ -9,9 +9,8 @@ Part 1 of this project deals with comparison of a first-principles neural networ
 Backpropagation:
 Squared error: $E_3=(a_3-y_3)^2$
 We want to correct all the weights and bias values to make the squared error close to zero. When we achieve that for a large number of data sets, we have trained the neural network to model the system. 
-Consider one of the weights, w_01. If we knew the derivative ∂E3/∂w01, we could use a Newton-Raphson finite difference approximation to find a new value for w_01 that would make the error go to zero:
-
-w01,n = w01 + (0 - E3) / (∂E3 / ∂w01)
+Consider one of the weights, $w_01$. If we knew the derivative $\frac{\partial E3}{\partial w_01}$ ,we could use a Newton-Raphson finite difference approximation to find a new value for $w_01$ that would make the error go to zero:
+$w_01,n = w_01 + (0 - E_3) / (\frac{\partial E3}{\partial w_01})$
 
 However, in our neural network, we have eight weights and biases, so we only want to correct about 1/8th of the total error at each iteration. To do this, we modify the above equation to:
 
