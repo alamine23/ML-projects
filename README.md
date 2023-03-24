@@ -30,7 +30,7 @@ Part 1 of this project deals with comparison of a first-principles neural networ
 - `Keras_First_Principles_comparison.ipynb`: This notebook compares the results of the neural network and first-principles models.
 Part 2 of this project deals with analysis of the hybrid solar fossil-fuel gas turbine system in the figures below.
 <img width="370" alt="Screenshot 2023-03-24 at 4 31 38 PM" src="https://user-images.githubusercontent.com/124940176/227661388-04f810f8-836c-4387-b757-07cd4130948c.png">
-For this system, air at 101 kPa and temperature enters the compressor at 6.0 kg/s. The compressed air is heated in the regenerator and solar thermal exchanger, then burned with fuel in a burner to reach the target temperature of 1473 K. The fuel mixture varies and must be adjusted to maintain the temperature. A physical model may not be accurate due to idealizations, while constructing a machine learning model based on test data is more accurate. Part 2 of the project aims to create a neural network model for the gas turbine system.
+For this system, air at 101 kPa and temperature enters the compressor at 6.0 kg/s. The compressed air is heated in the regenerator and solar thermal exchanger, then burned with fuel in a burner to reach the target temperature of 1473 K. The fuel mixture varies and must be adjusted to maintain the temperature. A physical model may not be accurate due to idealizations, while constructing a machine learning model based on test data is more accurate. Part 2 of the project therefore aims to create a neural network model for the gas turbine system.
 - `Keras_NN_Prediction.ipynb`: This notebook uses a neural network to predict the performance of the system.
 
 
