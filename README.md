@@ -20,4 +20,5 @@ This project focuses on the design and control of a solar PV power generation sy
 - `Performance_Solar_PV.ipynb`: This notebook analyzes the performance  of the panel based mainly on data at flux levels below 1300 W/m2, and validate it against data at higher flux
 levels. The intent is to then use the model to predict performance of the solar PV panel at higher flux levels that should shift the V-I performance curve to higher current and/or voltage levels.
 
-##Dual_Electronic_Components_Cooling
+## Dual_Electronic_Components_Cooling
+
