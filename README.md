@@ -4,6 +4,13 @@ This repository contains 3 machine learning projects.
 
 ## Hybrid solar/fossil-fuel gas turbine power system
 This project focuses on the implementation of a hybrid solar/fossil-fuel gas turbine power system. The following files are included:
+Part 1 of this project deals with comparison of a first-principles neural network implementation and the corresponding calculation using the keras Python software.
+<img width="465" alt="Simple_NN" src="https://user-images.githubusercontent.com/124940176/227660211-dc6d4153-4b9c-451e-95f1-930d986c450a.png">
+Backpropagation:
+Squared error: $E_3=(a_3-y_3)^2$
+
+We want to correct all the weights and bias values to make the squared error close to zero. When we achieve that for a large number of data sets, we have trained the neural network to model the system
+![image](https://user-images.githubusercontent.com/124940176/227660353-d2ed15ca-491d-4852-924d-ded003f32855.png)
 
 - `First_Principles_implementation.ipynb`: This notebook contains the implementation of a first-principles model of the system (neural network designed from scartch).
 
